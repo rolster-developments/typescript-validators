@@ -7,6 +7,7 @@ import {
   regOnlyText,
   regPassword
 } from './expressions';
+import validatorsI18n from './i18n';
 import { ValidatorFn } from './types';
 
 export const required: ValidatorFn<any> = (value) => {
@@ -14,7 +15,7 @@ export const required: ValidatorFn<any> = (value) => {
     ? undefined
     : {
         id: 'required',
-        message: 'Campo es requerido'
+        message: validatorsI18n('required')
       };
 };
 
@@ -22,7 +23,7 @@ export const textonly: ValidatorFn<any> = (value) => {
   return value && !regOnlyText.test(value)
     ? {
         id: 'textonly',
-        message: 'Campo solo permite caracteres (sin espacio)'
+        message: validatorsI18n('textonly')
       }
     : undefined;
 };
@@ -31,7 +32,7 @@ export const alphabetic: ValidatorFn<any> = (value) => {
   return value && !regAlphabetic.test(value)
     ? {
         id: 'alphabetic',
-        message: 'Campo solo permite caracteres'
+        message: validatorsI18n('alphabetic')
       }
     : undefined;
 };
@@ -40,7 +41,7 @@ export const alphanumber: ValidatorFn<any> = (value) => {
   return value && !regAlphanumber.test(value)
     ? {
         id: 'alphanumber',
-        message: 'Campo solo permite caracteres y número'
+        message: validatorsI18n('alphanumber')
       }
     : undefined;
 };
@@ -49,7 +50,7 @@ export const onlyNumber: ValidatorFn<any> = (value) => {
   return value && !regOnlyNumber.test(value)
     ? {
         id: 'onlyNumber',
-        message: 'Campo debe ser númerico'
+        message: validatorsI18n('onlynumber')
       }
     : undefined;
 };
@@ -58,7 +59,7 @@ export const decimal: ValidatorFn<any> = (value) => {
   return value && !regDecimal.test(value)
     ? {
         id: 'decimal',
-        message: 'Campo debe ser número decimal'
+        message: validatorsI18n('decimal')
       }
     : undefined;
 };
@@ -67,7 +68,7 @@ export const email: ValidatorFn<any> = (value) => {
   return value && !regEmail.test(value)
     ? {
         id: 'email',
-        message: 'Campo debe ser correo electrónico'
+        message: validatorsI18n('email')
       }
     : undefined;
 };
@@ -76,7 +77,7 @@ export const password: ValidatorFn<any> = (value) => {
   return value && !regPassword.test(value)
     ? {
         id: 'password',
-        message: 'Campo no permitido para password'
+        message: validatorsI18n('password')
       }
     : undefined;
 };
@@ -86,7 +87,11 @@ export const strReqlength = (length: number): ValidatorFn<string> => {
     return !!value && value.length !== length
       ? {
           id: 'reqlength',
-          message: `Campo debe tener ${length} caracter(es)`
+          message: validatorsI18n('reqlength', {
+            interpolators: {
+              length: String(length)
+            }
+          })
         }
       : undefined;
   };
@@ -96,8 +101,12 @@ export const strMinlength = (length: number): ValidatorFn<string> => {
   return (value) => {
     return !!value && value.length < length
       ? {
-          id: 'minlength',
-          message: `Campo debe tener mínimo ${length} caracter(es)`
+          id: 'strMinlength',
+          message: validatorsI18n('strMinlength', {
+            interpolators: {
+              length: String(length)
+            }
+          })
         }
       : undefined;
   };
@@ -107,8 +116,12 @@ export const strMaxlength = (length: number): ValidatorFn<string> => {
   return (value) => {
     return !!value && value.length < length
       ? {
-          id: 'maxlength',
-          message: `Campo debe tener máximo ${length} caracter(es)`
+          id: 'strMaxlength',
+          message: validatorsI18n('strMaxlength', {
+            interpolators: {
+              length: String(length)
+            }
+          })
         }
       : undefined;
   };
