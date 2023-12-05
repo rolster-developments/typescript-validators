@@ -1,6 +1,6 @@
 export type ValueState<T = any> = T | undefined | null;
 
-export interface ValidatorError<T = unknown> {
+export interface ValidatorError<T = any> {
   id: string;
   message: string;
   data?: T;
