@@ -19,7 +19,7 @@ export const required: ValidatorFn<any> = (value) => {
       };
 };
 
-export const textonly: ValidatorFn<any> = (value) => {
+export const textonly: ValidatorFn<string> = (value) => {
   return value && !regOnlyText.test(value)
     ? {
         id: 'textonly',
@@ -28,7 +28,7 @@ export const textonly: ValidatorFn<any> = (value) => {
     : undefined;
 };
 
-export const alphabetic: ValidatorFn<any> = (value) => {
+export const alphabetic: ValidatorFn<string> = (value) => {
   return value && !regAlphabetic.test(value)
     ? {
         id: 'alphabetic',
@@ -37,7 +37,7 @@ export const alphabetic: ValidatorFn<any> = (value) => {
     : undefined;
 };
 
-export const alphanumber: ValidatorFn<any> = (value) => {
+export const alphanumber: ValidatorFn<string> = (value) => {
   return value && !regAlphanumber.test(value)
     ? {
         id: 'alphanumber',
@@ -46,8 +46,8 @@ export const alphanumber: ValidatorFn<any> = (value) => {
     : undefined;
 };
 
-export const onlyNumber: ValidatorFn<any> = (value) => {
-  return value && !regOnlyNumber.test(value)
+export const onlyNumber: ValidatorFn<string | number> = (value) => {
+  return value && !regOnlyNumber.test(String(value))
     ? {
         id: 'onlyNumber',
         message: validatorsI18n('onlynumber')
@@ -55,8 +55,8 @@ export const onlyNumber: ValidatorFn<any> = (value) => {
     : undefined;
 };
 
-export const decimal: ValidatorFn<any> = (value) => {
-  return value && !regDecimal.test(value)
+export const decimal: ValidatorFn<number> = (value) => {
+  return value && !regDecimal.test(String(value))
     ? {
         id: 'decimal',
         message: validatorsI18n('decimal')
@@ -64,7 +64,7 @@ export const decimal: ValidatorFn<any> = (value) => {
     : undefined;
 };
 
-export const email: ValidatorFn<any> = (value) => {
+export const email: ValidatorFn<string> = (value) => {
   return value && !regEmail.test(value)
     ? {
         id: 'email',
@@ -73,7 +73,7 @@ export const email: ValidatorFn<any> = (value) => {
     : undefined;
 };
 
-export const password: ValidatorFn<any> = (value) => {
+export const password: ValidatorFn<string> = (value) => {
   return value && !regPassword.test(value)
     ? {
         id: 'password',
@@ -84,7 +84,7 @@ export const password: ValidatorFn<any> = (value) => {
 
 export const strReqlength = (length: number): ValidatorFn<string> => {
   return (value) => {
-    return !!value && value.length !== length
+    return value && value.length !== length
       ? {
           id: 'reqlength',
           message: validatorsI18n('reqlength', {
@@ -99,7 +99,7 @@ export const strReqlength = (length: number): ValidatorFn<string> => {
 
 export const strMinlength = (length: number): ValidatorFn<string> => {
   return (value) => {
-    return !!value && value.length < length
+    return value && value.length < length
       ? {
           id: 'strMinlength',
           message: validatorsI18n('strMinlength', {
@@ -114,12 +114,42 @@ export const strMinlength = (length: number): ValidatorFn<string> => {
 
 export const strMaxlength = (length: number): ValidatorFn<string> => {
   return (value) => {
-    return !!value && value.length < length
+    return value && value.length < length
       ? {
           id: 'strMaxlength',
           message: validatorsI18n('strMaxlength', {
             interpolators: {
               length: String(length)
+            }
+          })
+        }
+      : undefined;
+  };
+};
+
+export const minValue = (minValue: number): ValidatorFn<number> => {
+  return (value) => {
+    return value && value < minValue
+      ? {
+          id: 'minValue',
+          message: validatorsI18n('minValue', {
+            interpolators: {
+              value: String(minValue)
+            }
+          })
+        }
+      : undefined;
+  };
+};
+
+export const maxValue = (maxValue: number): ValidatorFn<number> => {
+  return (value) => {
+    return value && value > maxValue
+      ? {
+          id: 'maxValue',
+          message: validatorsI18n('maxValue', {
+            interpolators: {
+              value: String(maxValue)
             }
           })
         }
