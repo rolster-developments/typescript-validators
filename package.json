@@ -72,5 +72,8 @@
     "rolster",
     "typescript",
     "validators"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
