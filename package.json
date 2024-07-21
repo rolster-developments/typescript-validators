@@ -1,6 +1,6 @@
 {
   "name": "@rolster/validators",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "Utility lightweight simple for apply data validations.",
   "module": "dist/esm/index.js",
   "main": "dist/cjs/index.js",
@@ -48,7 +48,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@rolster/i18n": "^1.3.4"
+    "@rolster/i18n": "^2.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.4",
