@@ -114,7 +114,7 @@ export const strMinlength = (length: number): ValidatorFn<string> => {
 
 export const strMaxlength = (length: number): ValidatorFn<string> => {
   return (value) => {
-    return value && value.length < length
+    return value && value.length > length
       ? {
           id: 'strMaxlength',
           message: validatorsI18n('strMaxlength', {
