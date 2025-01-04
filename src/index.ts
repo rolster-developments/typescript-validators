@@ -23,9 +23,7 @@ export const validate = <T extends LiteralObject<ValueState>>(
         validators?.reduce((errors, validator) => {
           const error = validator(object[key]);
 
-          if (error) {
-            errors.push(error);
-          }
+          error && errors.push(error);
 
           return errors;
         }, [] as ValidatorError[]) || [];

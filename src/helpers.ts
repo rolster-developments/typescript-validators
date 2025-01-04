@@ -1,13 +1,13 @@
 import {
-  regAlphabetic,
-  regAlphanumber,
-  regDecimal,
-  regEmail,
-  regOnlyNumber,
-  regOnlyText,
-  regPassword
+  REGEX_ALPHABETIC,
+  REGEX_ALPHANUMBER,
+  REGEX_DECIMAL,
+  REGEX_EMAIL,
+  REGEX_ONLY_NUMBER,
+  REGEX_ONLY_TEXT,
+  REGEX_PASSWORD
 } from './expressions';
-import validatorsI18n from './i18n';
+import { validatorsI18n } from './i18n';
 import { ValidatorFn, ValidatorResult, ValueState } from './types';
 
 export function defined<T = any>(value?: ValueState<T>): ValidatorResult {
@@ -29,7 +29,7 @@ export function required<T = any>(value?: ValueState<T>): ValidatorResult {
 }
 
 export function textonly(value?: ValueState<string>): ValidatorResult {
-  return value && !regOnlyText.test(value)
+  return value && !REGEX_ONLY_TEXT.test(value)
     ? {
         id: 'textonly',
         message: validatorsI18n('textonly')
@@ -38,7 +38,7 @@ export function textonly(value?: ValueState<string>): ValidatorResult {
 }
 
 export function alphabetic(value?: ValueState<string>): ValidatorResult {
-  return value && !regAlphabetic.test(value)
+  return value && !REGEX_ALPHABETIC.test(value)
     ? {
         id: 'alphabetic',
         message: validatorsI18n('alphabetic')
@@ -47,7 +47,7 @@ export function alphabetic(value?: ValueState<string>): ValidatorResult {
 }
 
 export function alphanumber(value?: ValueState<string>): ValidatorResult {
-  return value && !regAlphanumber.test(value)
+  return value && !REGEX_ALPHANUMBER.test(value)
     ? {
         id: 'alphanumber',
         message: validatorsI18n('alphanumber')
@@ -58,7 +58,7 @@ export function alphanumber(value?: ValueState<string>): ValidatorResult {
 export function onlyNumber(
   value?: ValueState<string | number>
 ): ValidatorResult {
-  return value && !regOnlyNumber.test(String(value))
+  return value && !REGEX_ONLY_NUMBER.test(String(value))
     ? {
         id: 'onlyNumber',
         message: validatorsI18n('onlynumber')
@@ -67,7 +67,7 @@ export function onlyNumber(
 }
 
 export function decimal(value?: ValueState<number>): ValidatorResult {
-  return value && !regDecimal.test(String(value))
+  return value && !REGEX_DECIMAL.test(String(value))
     ? {
         id: 'decimal',
         message: validatorsI18n('decimal')
@@ -76,7 +76,7 @@ export function decimal(value?: ValueState<number>): ValidatorResult {
 }
 
 export function email(value?: ValueState<string>): ValidatorResult {
-  return value && !regEmail.test(value)
+  return value && !REGEX_EMAIL.test(value)
     ? {
         id: 'email',
         message: validatorsI18n('email')
@@ -85,7 +85,7 @@ export function email(value?: ValueState<string>): ValidatorResult {
 }
 
 export function password(value?: ValueState<string>): ValidatorResult {
-  return value && !regPassword.test(value)
+  return value && !REGEX_PASSWORD.test(value)
     ? {
         id: 'password',
         message: validatorsI18n('password')

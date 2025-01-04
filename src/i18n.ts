@@ -1,6 +1,6 @@
 import { i18n } from '@rolster/i18n';
 
-const validatorsI18n = i18n({
+export const validatorsI18n = i18n({
   es: {
     alphabetic: 'Campo solo permite caracteres',
     alphanumber: 'Campo solo permite caracteres y número',
@@ -34,5 +34,3 @@ const validatorsI18n = i18n({
     textonly: 'Field only allows characters (no space)'
   }
 });
-
-export default validatorsI18n;
