@@ -66,15 +66,6 @@ export function onlyNumber(
     : undefined;
 }
 
-export function decimal(value?: ValueState<number>): ValidatorResult {
-  return value && !REGEX_DECIMAL.test(String(value))
-    ? {
-        id: 'decimal',
-        message: validatorsI18n('decimal')
-      }
-    : undefined;
-}
-
 export function email(value?: ValueState<string>): ValidatorResult {
   return value && !REGEX_EMAIL.test(value)
     ? {
@@ -99,9 +90,7 @@ export const strReqlength = (length: number): ValidatorFn<string> => {
       ? {
           id: 'reqlength',
           message: validatorsI18n('reqlength', {
-            interpolators: {
-              length: String(length)
-            }
+            interpolators: { length: String(length) }
           })
         }
       : undefined;
@@ -114,9 +103,7 @@ export const strMinlength = (length: number): ValidatorFn<string> => {
       ? {
           id: 'strMinlength',
           message: validatorsI18n('strMinlength', {
-            interpolators: {
-              length: String(length)
-            }
+            interpolators: { length: String(length) }
           })
         }
       : undefined;
@@ -129,14 +116,21 @@ export const strMaxlength = (length: number): ValidatorFn<string> => {
       ? {
           id: 'strMaxlength',
           message: validatorsI18n('strMaxlength', {
-            interpolators: {
-              length: String(length)
-            }
+            interpolators: { length: String(length) }
           })
         }
       : undefined;
   };
 };
+
+export function decimal(value?: ValueState<number>): ValidatorResult {
+  return value && !REGEX_DECIMAL.test(String(value))
+    ? {
+        id: 'decimal',
+        message: validatorsI18n('decimal')
+      }
+    : undefined;
+}
 
 export const minValue = (minValue: number): ValidatorFn<number> => {
   return (value) => {
@@ -144,9 +138,7 @@ export const minValue = (minValue: number): ValidatorFn<number> => {
       ? {
           id: 'minValue',
           message: validatorsI18n('minValue', {
-            interpolators: {
-              value: String(minValue)
-            }
+            interpolators: { value: String(minValue) }
           })
         }
       : undefined;
@@ -159,9 +151,63 @@ export const maxValue = (maxValue: number): ValidatorFn<number> => {
       ? {
           id: 'maxValue',
           message: validatorsI18n('maxValue', {
-            interpolators: {
-              value: String(maxValue)
-            }
+            interpolators: { value: String(maxValue) }
+          })
+        }
+      : undefined;
+  };
+};
+
+export const greaterThanValue = (baseValue: number): ValidatorFn<number> => {
+  return (value) => {
+    return value && value <= baseValue
+      ? {
+          id: 'greaterThanValue',
+          message: validatorsI18n('greaterThanValue', {
+            interpolators: { value: String(baseValue) }
+          })
+        }
+      : undefined;
+  };
+};
+
+export const greaterOrEqualsThanValue = (
+  baseValue: number
+): ValidatorFn<number> => {
+  return (value) => {
+    return value && value < baseValue
+      ? {
+          id: 'greaterOrEqualsThanValue',
+          message: validatorsI18n('greaterOrEqualsThanValue', {
+            interpolators: { value: String(baseValue) }
+          })
+        }
+      : undefined;
+  };
+};
+
+export const lessThanValue = (baseValue: number): ValidatorFn<number> => {
+  return (value) => {
+    return value && value >= baseValue
+      ? {
+          id: 'lessThanValue',
+          message: validatorsI18n('lessThanValue', {
+            interpolators: { value: String(baseValue) }
+          })
+        }
+      : undefined;
+  };
+};
+
+export const lessOrEqualsThanValue = (
+  baseValue: number
+): ValidatorFn<number> => {
+  return (value) => {
+    return value && value > baseValue
+      ? {
+          id: 'lessOrEqualsThanValue',
+          message: validatorsI18n('lessOrEqualsThanValue', {
+            interpolators: { value: String(baseValue) }
           })
         }
       : undefined;

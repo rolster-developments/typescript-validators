@@ -7,6 +7,11 @@ export const validatorsI18n = i18n({
     decimal: 'Campo debe ser número decimal',
     defined: 'Campo debe estar definido',
     email: 'Campo debe ser correo electrónico',
+    greaterThanValue: 'Campo debe tener un valor mayor a {value}',
+    greaterOrEqualsThanValue:
+      'Campo debe tener un valor mayor o igual a {value}',
+    lessThanValue: 'Campo debe tener un valor menor a {value}',
+    lessOrEqualsThanValue: 'Campo debe tener un valor menor o igual a {value}',
     maxValue: 'Campo debe tener un valor máximo de {value}',
     minValue: 'Campo debe tener un valor mínimo de {value}',
     onlynumber: 'Campo debe ser númerico',
@@ -23,6 +28,12 @@ export const validatorsI18n = i18n({
     decimal: 'Field must be decimal number',
     defined: 'Field must be defined',
     email: 'Field must be email',
+    greaterThanValue: 'Field must have a value greater than {value}',
+    greaterOrEqualsThanValue:
+      'Field must have a value greater than or equal to {value}',
+    lessThanValue: 'Field must have a value less than {value}',
+    lessOrEqualsThanValue:
+      'Field must have a value less than or equal to {value}',
     minValue: 'Field must have a minimum value of {value}',
     maxValue: 'Field must have a maximum value of {value}',
     onlynumber: 'Field must be numeric',
