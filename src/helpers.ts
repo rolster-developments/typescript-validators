@@ -3,6 +3,7 @@ import {
   REGEX_ALPHANUMBER,
   REGEX_DECIMAL,
   REGEX_EMAIL,
+  REGEX_NICKNAME,
   REGEX_ONLY_NUMBER,
   REGEX_ONLY_TEXT,
   REGEX_PASSWORD
@@ -71,6 +72,15 @@ export function email(value?: ValueState<string>): ValidatorResult {
     ? {
         id: 'email',
         message: validatorsI18n('email')
+      }
+    : undefined;
+}
+
+export function nickname(value?: ValueState<string>): ValidatorResult {
+  return value && !REGEX_NICKNAME.test(value)
+    ? {
+        id: 'nickname',
+        message: validatorsI18n('nickname')
       }
     : undefined;
 }
