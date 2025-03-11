@@ -12,10 +12,13 @@ import { validatorsI18n } from './i18n';
 import { ValidatorFn, ValidatorResult, ValueState } from './types';
 
 export function defined<T = any>(value?: ValueState<T>): ValidatorResult {
-  return !!value
+  return value != undefined && value != null
     ? undefined
     : {
         id: 'defined',
+        data: {
+          value: String(value)
+        },
         message: validatorsI18n('defined')
       };
 }
@@ -25,6 +28,9 @@ export function required<T = any>(value?: ValueState<T>): ValidatorResult {
     ? undefined
     : {
         id: 'required',
+        data: {
+          value: String(value)
+        },
         message: validatorsI18n('required')
       };
 }
@@ -33,6 +39,9 @@ export function textonly(value?: ValueState<string>): ValidatorResult {
   return value && !REGEX_ONLY_TEXT.test(value)
     ? {
         id: 'textonly',
+        data: {
+          value: String(value)
+        },
         message: validatorsI18n('textonly')
       }
     : undefined;
@@ -42,6 +51,9 @@ export function alphabetic(value?: ValueState<string>): ValidatorResult {
   return value && !REGEX_ALPHABETIC.test(value)
     ? {
         id: 'alphabetic',
+        data: {
+          value: String(value)
+        },
         message: validatorsI18n('alphabetic')
       }
     : undefined;
@@ -51,6 +63,9 @@ export function alphanumber(value?: ValueState<string>): ValidatorResult {
   return value && !REGEX_ALPHANUMBER.test(value)
     ? {
         id: 'alphanumber',
+        data: {
+          value: String(value)
+        },
         message: validatorsI18n('alphanumber')
       }
     : undefined;
@@ -62,6 +77,9 @@ export function onlyNumber(
   return value && !REGEX_ONLY_NUMBER.test(String(value))
     ? {
         id: 'onlyNumber',
+        data: {
+          value: String(value)
+        },
         message: validatorsI18n('onlynumber')
       }
     : undefined;
@@ -71,6 +89,9 @@ export function email(value?: ValueState<string>): ValidatorResult {
   return value && !REGEX_EMAIL.test(value)
     ? {
         id: 'email',
+        data: {
+          value: String(value)
+        },
         message: validatorsI18n('email')
       }
     : undefined;
@@ -80,6 +101,9 @@ export function nickname(value?: ValueState<string>): ValidatorResult {
   return value && !REGEX_NICKNAME.test(value)
     ? {
         id: 'nickname',
+        data: {
+          value: String(value)
+        },
         message: validatorsI18n('nickname')
       }
     : undefined;
@@ -89,6 +113,9 @@ export function password(value?: ValueState<string>): ValidatorResult {
   return value && !REGEX_PASSWORD.test(value)
     ? {
         id: 'password',
+        data: {
+          value: String(value)
+        },
         message: validatorsI18n('password')
       }
     : undefined;
@@ -99,6 +126,10 @@ export const strReqlength = (length: number): ValidatorFn<string> => {
     return value && value.length !== length
       ? {
           id: 'reqlength',
+          data: {
+            length: String(length),
+            value
+          },
           message: validatorsI18n('reqlength', {
             interpolators: { length: String(length) }
           })
@@ -112,6 +143,10 @@ export const strMinlength = (length: number): ValidatorFn<string> => {
     return value && value.length < length
       ? {
           id: 'strMinlength',
+          data: {
+            length: String(length),
+            value
+          },
           message: validatorsI18n('strMinlength', {
             interpolators: { length: String(length) }
           })
@@ -125,6 +160,10 @@ export const strMaxlength = (length: number): ValidatorFn<string> => {
     return value && value.length > length
       ? {
           id: 'strMaxlength',
+          data: {
+            length: String(length),
+            value
+          },
           message: validatorsI18n('strMaxlength', {
             interpolators: { length: String(length) }
           })
@@ -137,6 +176,9 @@ export function decimal(value?: ValueState<number>): ValidatorResult {
   return value && !REGEX_DECIMAL.test(String(value))
     ? {
         id: 'decimal',
+        data: {
+          value: String(value)
+        },
         message: validatorsI18n('decimal')
       }
     : undefined;
@@ -147,6 +189,10 @@ export const minValue = (minValue: number): ValidatorFn<number> => {
     return value && value < minValue
       ? {
           id: 'minValue',
+          data: {
+            minValue: String(minValue),
+            value: String(value)
+          },
           message: validatorsI18n('minValue', {
             interpolators: { value: String(minValue) }
           })
@@ -160,6 +206,10 @@ export const maxValue = (maxValue: number): ValidatorFn<number> => {
     return value && value > maxValue
       ? {
           id: 'maxValue',
+          data: {
+            maxValue: String(maxValue),
+            value: String(value)
+          },
           message: validatorsI18n('maxValue', {
             interpolators: { value: String(maxValue) }
           })
@@ -168,13 +218,17 @@ export const maxValue = (maxValue: number): ValidatorFn<number> => {
   };
 };
 
-export const greaterThanValue = (baseValue: number): ValidatorFn<number> => {
-  return (value) => {
-    return value && value <= baseValue
+export const greaterThanValue = (value: number): ValidatorFn<number> => {
+  return (_value) => {
+    return _value && _value <= value
       ? {
           id: 'greaterThanValue',
+          data: {
+            thanValue: String(value),
+            value: String(_value)
+          },
           message: validatorsI18n('greaterThanValue', {
-            interpolators: { value: String(baseValue) }
+            interpolators: { thanValue: String(value) }
           })
         }
       : undefined;
@@ -182,42 +236,52 @@ export const greaterThanValue = (baseValue: number): ValidatorFn<number> => {
 };
 
 export const greaterOrEqualsThanValue = (
-  baseValue: number
+  value: number
 ): ValidatorFn<number> => {
-  return (value) => {
-    return value && value < baseValue
+  return (_value) => {
+    return _value && _value < value
       ? {
           id: 'greaterOrEqualsThanValue',
+          data: {
+            thanValue: String(value),
+            value: String(_value)
+          },
           message: validatorsI18n('greaterOrEqualsThanValue', {
-            interpolators: { value: String(baseValue) }
+            interpolators: { thanValue: String(value) }
           })
         }
       : undefined;
   };
 };
 
-export const lessThanValue = (baseValue: number): ValidatorFn<number> => {
-  return (value) => {
-    return value && value >= baseValue
+export const lessThanValue = (value: number): ValidatorFn<number> => {
+  return (_value) => {
+    return _value && _value >= value
       ? {
           id: 'lessThanValue',
+          data: {
+            thanValue: String(value),
+            value: String(_value)
+          },
           message: validatorsI18n('lessThanValue', {
-            interpolators: { value: String(baseValue) }
+            interpolators: { thanValue: String(value) }
           })
         }
       : undefined;
   };
 };
 
-export const lessOrEqualsThanValue = (
-  baseValue: number
-): ValidatorFn<number> => {
-  return (value) => {
-    return value && value > baseValue
+export const lessOrEqualsThanValue = (value: number): ValidatorFn<number> => {
+  return (_value) => {
+    return _value && _value > value
       ? {
           id: 'lessOrEqualsThanValue',
+          data: {
+            thanValue: String(value),
+            value: String(_value)
+          },
           message: validatorsI18n('lessOrEqualsThanValue', {
-            interpolators: { value: String(baseValue) }
+            interpolators: { thanValue: String(value) }
           })
         }
       : undefined;
