@@ -80,7 +80,7 @@ export function onlyNumber(
         data: {
           value: String(value)
         },
-        message: validatorsI18n('onlynumber')
+        message: validatorsI18n('onlyNumber')
       }
     : undefined;
 }
