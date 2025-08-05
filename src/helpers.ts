@@ -35,6 +35,18 @@ export function required<T = any>(value?: ValueState<T>): ValidatorResult {
       };
 }
 
+export function checked(value?: ValueState<boolean>): ValidatorResult {
+  return value
+    ? undefined
+    : {
+        id: 'checked',
+        data: {
+          value: String(value)
+        },
+        message: validatorsI18n('checked')
+      };
+}
+
 export function textonly(value?: ValueState<string>): ValidatorResult {
   return value && !REGEX_ONLY_TEXT.test(value)
     ? {

@@ -4,6 +4,7 @@ export const validatorsI18n = i18n({
   es: {
     alphabetic: 'Campo solo permite caracteres',
     alphanumber: 'Campo solo permite caracteres y número',
+    checked: 'Campo debe ser seleccionado',
     decimal: 'Campo debe ser número decimal',
     defined: 'Campo debe estar definido',
     email: 'Campo debe ser correo electrónico',
@@ -11,7 +12,8 @@ export const validatorsI18n = i18n({
     greaterOrEqualsThanValue:
       'Campo debe tener un valor mayor o igual a {thanValue}',
     lessThanValue: 'Campo debe tener un valor menor a {thanValue}',
-    lessOrEqualsThanValue: 'Campo debe tener un valor menor o igual a {thanValue}',
+    lessOrEqualsThanValue:
+      'Campo debe tener un valor menor o igual a {thanValue}',
     maxValue: 'Campo debe tener un valor máximo de {thanValue}',
     minValue: 'Campo debe tener un valor mínimo de {thanValue}',
     nickname: 'Campo inválido para nombre de usuario',
@@ -26,6 +28,7 @@ export const validatorsI18n = i18n({
   en: {
     alphabetic: 'Field only allows characters',
     alphanumber: 'Field only allows characters and number',
+    checked: 'Field must be selected',
     decimal: 'Field must be decimal number',
     defined: 'Field must be defined',
     email: 'Field must be email',
