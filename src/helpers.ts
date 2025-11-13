@@ -137,12 +137,12 @@ export const strReqlength = (length: number): ValidatorFn<string> => {
   return (value) => {
     return value && value.length !== length
       ? {
-          id: 'reqlength',
+          id: 'strReqLength',
           data: {
             length: String(length),
             value
           },
-          message: validatorsI18n('reqlength', {
+          message: validatorsI18n('strReqLength', {
             interpolators: { length: String(length) }
           })
         }

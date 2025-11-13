@@ -19,10 +19,10 @@ export const validatorsI18n = i18n({
     nickname: 'Campo inválido para nombre de usuario',
     onlyNumber: 'Campo debe ser númerico',
     password: 'Campo no permitido para password',
-    reqlength: 'Campo debe tener {length} caracter(es)',
     required: 'Campo es requerido',
     strMinlength: 'Campo debe tener mínimo {length} caracter(es)',
     strMaxlength: 'Campo debe tener máximo {length} caracter(es)',
+    strReqLength: 'Campo debe tener {length} caracter(es)',
     textonly: 'Campo solo permite caracteres (sin espacio)'
   },
   en: {
@@ -43,7 +43,7 @@ export const validatorsI18n = i18n({
     nickname: 'Invalid field for username',
     onlyNumber: 'Field must be numeric',
     password: 'Field not allowed for password',
-    reqlength: 'Field must be {length} characters',
+    strReqLength: 'Field must be {length} characters',
     required: 'Field is required',
     strMinlength: 'Field must have minimum {length} characters',
     strMaxlength: 'Field must have maximum {length} characters',
