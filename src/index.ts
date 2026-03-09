@@ -15,7 +15,7 @@ export const validate = <T extends LiteralObject<ValueState>>(
   object: T,
   validates: Validates<T>
 ): ValidateResult => {
-  return Object.keys(validates).reduce(
+  return Object.keys(validates).reduce<ValidateResult>(
     (currentResult, key) => {
       const validators = validates[key];
 
@@ -41,7 +41,7 @@ export const validate = <T extends LiteralObject<ValueState>>(
 
       return currentResult;
     },
-    { valid: true, errors: {} } as ValidateResult
+    { valid: true, errors: {} }
   );
 };
 
