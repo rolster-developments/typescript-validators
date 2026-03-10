@@ -1,6 +1,6 @@
 {
   "name": "@rolster/validators",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "type": "module",
   "description": "Utility lightweight simple for apply data validations.",
   "license": "MIT",
@@ -11,6 +11,9 @@
       "email": "ing.dacastillop@gmail.com"
     }
   ],
+  "types": "./dist/esm/index.d.ts",
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
   "exports": {
     ".": {
       "types": "./dist/esm/index.d.ts",
@@ -50,7 +53,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@rolster/i18n": "^2.3.0"
+    "@rolster/i18n": "^2.3.1"
   },
   "devDependencies": {
     "@rolster/rollup": "^1.0.10",
@@ -65,7 +68,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rolster-developments/typescript-validators.git"
+    "url": "git+https://github.com/rolster-developments/typescript-validators.git"
   },
   "keywords": [
     "rolster",

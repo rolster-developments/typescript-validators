@@ -1,8 +1,18 @@
 {
   "name": "@rolster/validators/helpers",
+  "type": "module",
   "types": "../dist/esm/helpers.d.ts",
   "main": "../dist/cjs/helpers.js",
   "module": "../dist/esm/helpers.js",
-  "unpkg": "../dist/es/helpers.js",
+  "exports": {
+    ".": {
+      "types": "../dist/esm/helpers.d.ts",
+      "node": {
+        "require": "../dist/cjs/helpers.js",
+        "import": "../dist/esm/helpers.js"
+      },
+      "default": "../dist/esm/helpers.js"
+    }
+  },
   "sideEffects": false
 }
