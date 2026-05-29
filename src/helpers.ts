@@ -3,6 +3,7 @@ import {
   REGEX_ALPHANUMBER,
   REGEX_DECIMAL,
   REGEX_EMAIL,
+  REGEX_HEX_COLOR,
   REGEX_NICKNAME,
   REGEX_ONLY_NUMBER,
   REGEX_ONLY_TEXT,
@@ -105,6 +106,18 @@ export function email(value?: ValueState<string>): ValidatorResult {
           value: String(value)
         },
         message: validatorsI18n('email')
+      }
+    : undefined;
+}
+
+export function hexColor(value?: ValueState<string>): ValidatorResult {
+  return value && !REGEX_HEX_COLOR.test(value)
+    ? {
+        id: 'hexColor',
+        data: {
+          value: String(value)
+        },
+        message: validatorsI18n('hexColor')
       }
     : undefined;
 }

@@ -11,6 +11,7 @@ export const validatorsI18n = i18n({
     greaterThanValue: 'Campo debe tener un valor mayor a {thanValue}',
     greaterOrEqualsThanValue:
       'Campo debe tener un valor mayor o igual a {thanValue}',
+    hexColor: 'Campo debe ser color hexadecimal',
     lessThanValue: 'Campo debe tener un valor menor a {thanValue}',
     lessOrEqualsThanValue:
       'Campo debe tener un valor menor o igual a {thanValue}',
@@ -35,6 +36,7 @@ export const validatorsI18n = i18n({
     greaterThanValue: 'Field must have a value greater than {thanValue}',
     greaterOrEqualsThanValue:
       'Field must have a value greater than or equal to {thanValue}',
+    hexColor: 'Field must be hexadecimal color',
     lessThanValue: 'Field must have a value less than {thanValue}',
     lessOrEqualsThanValue:
       'Field must have a value less than or equal to {thanValue}',

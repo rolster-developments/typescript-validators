@@ -1,6 +1,6 @@
 {
   "name": "@rolster/validators",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "type": "module",
   "description": "Utility lightweight simple for apply data validations.",
   "license": "MIT",
