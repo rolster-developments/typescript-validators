@@ -41,9 +41,7 @@
     }
   },
   "files": [
-    "dist/",
-    "expressions/",
-    "helpers/"
+    "dist/"
   ],
   "scripts": {
     "prettier": "prettier --write \"src/**/*.{ts}\"",
