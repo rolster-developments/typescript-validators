@@ -46,44 +46,44 @@ when the value is invalid, or `undefined` when it is valid.
 
 **Presence**
 
-| Validator              | Valid when…                          |
-| ---------------------- | ------------------------------------ |
-| `defined(value)`       | value is not `null`/`undefined`      |
-| `required(value)`      | value is truthy                      |
-| `checked(value)`       | boolean value is `true`              |
+| Validator         | Valid when…                     |
+| ----------------- | ------------------------------- |
+| `defined(value)`  | value is not `null`/`undefined` |
+| `required(value)` | value is truthy                 |
+| `checked(value)`  | boolean value is `true`         |
 
 **Text format**
 
-| Validator               | Valid when…                                       |
-| ----------------------- | ------------------------------------------------- |
-| `textonly(value)`       | only letters, no spaces                           |
-| `alphabetic(value)`     | only letters and spaces                           |
-| `alphanumber(value)`    | only letters and numbers                          |
-| `onlyNumber(value)`     | only digits                                       |
-| `email(value)`          | valid email address                               |
-| `hexColor(value)`       | hexadecimal color (`#RRGGBB` / `#RRGGBBAA`)       |
-| `nickname(value)`       | valid username (letters, numbers, `. _ - @`)      |
-| `password(value)`       | only the allowed password characters              |
-| `decimal(value)`        | decimal number                                    |
+| Validator            | Valid when…                                  |
+| -------------------- | -------------------------------------------- |
+| `textonly(value)`    | only letters, no spaces                      |
+| `alphabetic(value)`  | only letters and spaces                      |
+| `alphanumber(value)` | only letters and numbers                     |
+| `onlyNumber(value)`  | only digits                                  |
+| `email(value)`       | valid email address                          |
+| `hexColor(value)`    | hexadecimal color (`#RRGGBB` / `#RRGGBBAA`)  |
+| `nickname(value)`    | valid username (letters, numbers, `. _ - @`) |
+| `password(value)`    | only the allowed password characters         |
+| `decimal(value)`     | decimal number                               |
 
 **Length (factory validators)**
 
-| Validator                 | Valid when…                          |
-| ------------------------- | ------------------------------------ |
-| `strReqlength(n)`         | string length is exactly `n`         |
-| `strMinlength(n)`         | string length is at least `n`        |
-| `strMaxlength(n)`         | string length is at most `n`         |
+| Validator         | Valid when…                   |
+| ----------------- | ----------------------------- |
+| `strReqlength(n)` | string length is exactly `n`  |
+| `strMinlength(n)` | string length is at least `n` |
+| `strMaxlength(n)` | string length is at most `n`  |
 
 **Numeric range (factory validators)**
 
-| Validator                      | Valid when…              |
-| ------------------------------ | ------------------------ |
-| `minValue(n)`                  | value `>= n`             |
-| `maxValue(n)`                  | value `<= n`             |
-| `greaterThanValue(n)`          | value `> n`              |
-| `greaterOrEqualsThanValue(n)`  | value `>= n`             |
-| `lessThanValue(n)`             | value `< n`              |
-| `lessOrEqualsThanValue(n)`     | value `<= n`             |
+| Validator                     | Valid when…  |
+| ----------------------------- | ------------ |
+| `minValue(n)`                 | value `>= n` |
+| `maxValue(n)`                 | value `<= n` |
+| `greaterThanValue(n)`         | value `> n`  |
+| `greaterOrEqualsThanValue(n)` | value `>= n` |
+| `lessThanValue(n)`            | value `< n`  |
+| `lessOrEqualsThanValue(n)`    | value `<= n` |
 
 ```typescript
 import { required, email, strMinlength } from '@rolster/validators/helpers';
