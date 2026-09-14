@@ -1,8 +1,8 @@
 import { ValidatorError, ValidatorFn, ValueState } from './types';
 
-type Validates<T extends LiteralObject<ValueState>> = Partial<
-  Record<keyof T, ValidatorFn<T>[]>
->;
+type Validates<T extends LiteralObject<ValueState>> = {
+  [K in keyof T]?: ValidatorFn<T[K]>[];
+};
 
 type ValidateErrors = LiteralObject<ValidatorError[]>;
 

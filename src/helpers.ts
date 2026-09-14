@@ -219,7 +219,7 @@ export const minValue = (minValue: number): ValidatorFn<number> => {
             value: String(value)
           },
           message: validatorsI18n('minValue', {
-            interpolators: { value: String(minValue) }
+            interpolators: { thanValue: String(minValue) }
           })
         }
       : undefined;
@@ -236,7 +236,7 @@ export const maxValue = (maxValue: number): ValidatorFn<number> => {
             value: String(value)
           },
           message: validatorsI18n('maxValue', {
-            interpolators: { value: String(maxValue) }
+            interpolators: { thanValue: String(maxValue) }
           })
         }
       : undefined;
