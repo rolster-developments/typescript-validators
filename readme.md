@@ -142,4 +142,4 @@ REGEX_EMAIL.test('daniel@rolster.com'); // true
 
 ## Contributing
 
-- Daniel Andrés Castillo Pedroza :rocket:
+:sparkles: Daniel Andrés Castillo Pedroza
