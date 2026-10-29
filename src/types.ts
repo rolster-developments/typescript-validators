@@ -1,4 +1,4 @@
-export type ValueState<T = any> = T | undefined | null;
+export type ValueState<T = any> = Nullish<T>;
 
 export interface ValidatorError<T = any> {
   id: string;
