@@ -55,7 +55,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@rolster/i18n": "^3.1.4"
+    "@rolster/i18n": "^3.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
